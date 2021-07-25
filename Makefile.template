@@ -4,15 +4,14 @@ D_SRC := ./src
 D_OBJ := ./obj
 D_INC := ./include
 
-SRC := $(addsuffix .cpp, \
-)
+SRC :=
 OBJ := $(addprefix $(D_OBJ)/, $(SRC:.cpp=.o))
 INC := -I$(D_INC)
 
 LIB :=
 
 CXX := clang++
-CPPFLAGS := -std=c++03 -Wall -Wextra -Werror
+CPPFLAGS := -std=c++98 -Wall -Wextra -Werror
 RM := rm -f
 
 GREEN = \033[32m
