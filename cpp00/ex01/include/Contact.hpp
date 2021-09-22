@@ -14,8 +14,8 @@ class Contact
 public:
 	Contact();
 
-	int	size(void);
-	std::string	type_to_str(int type);
+	int	get_info_size(void);
+	static std::string	get_type_label(int type);
 	void	set_info(std::string str, int type);
 	std::string	get_info(int type);
 

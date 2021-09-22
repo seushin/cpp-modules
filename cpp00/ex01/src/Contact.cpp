@@ -4,7 +4,7 @@
 
 Contact::Contact()
 {
-	for (int i = 0; i < size(); ++i)
+	for (int i = 0; i < get_info_size(); ++i)
 		info[i] = "";
 }
 
@@ -18,12 +18,12 @@ std::string	Contact::get_info(int type)
 	return (info[type]);
 }
 
-int	Contact::size(void)
+int	Contact::get_info_size(void)
 {
 	return (info_size);
 }
 
-std::string	Contact::type_to_str(int type)
+std::string	Contact::get_type_label(int type)
 {
 	if (type == C_FIRST_NAME)
 		return ("first name");
