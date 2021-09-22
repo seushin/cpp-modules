@@ -23,6 +23,19 @@ LF = \033[1A\033[K
 
 all: $(NAME)
 
+$(NAME): $(OBJ)
+	@echo "$(GREEN)🚀 Build $(RESET)$@"
+	@$(CXX) $(CPPFLAGS) $(INC) $(LIB) -o $@ $(OBJ)
+
+$(OBJ): | $(D_OBJ)
+
+$(D_OBJ):
+	@mkdir -p $(D_OBJ)
+
+$(D_OBJ)/%.o: $(D_SRC)/%.cpp
+	@echo "$(LF)$(YELLOW)🔨 compiling:$(RESET) $<"
+	@$(CXX) $(CPPFLAGS) $(INC) -c $< -o $@
+
 clean:
 	@echo "$(YELLOW)🧹 Deleting all object from $(NAME)...$(RESET)"
 	@$(RM) -r $(D_OBJ)
@@ -36,15 +49,3 @@ re: fclean crlf all
 crlf:
 	@echo "\n$(LF)"
 
-$(NAME): $(OBJ)
-	@echo "$(GREEN)🚀 Build $(RESET)$@"
-	@$(CXX) $(CPPFLAGS) $(INC) $(LIB) -o $@ $(OBJ)
-
-$(OBJ): | $(D_OBJ)
-
-$(D_OBJ):
-	@mkdir -p $(D_OBJ)
-
-$(D_OBJ)/%.o: $(D_SRC)/%.cpp
-	@echo "$(LF)$(YELLOW)🔨 compiling:$(RESET) $<"
-	@$(CXX) $(CPPFLAGS) $(INC) -c $< -o $@
