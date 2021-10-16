@@ -10,11 +10,11 @@ int	Account::_totalNbDeposits;
 int	Account::_totalNbWithdrawals;
 
 Account::Account(void)
+	:	_accountIndex(_nbAccounts),
+		_amount(0),
+		_nbDeposits(0),
+		_nbWithdrawals(0)
 {
-	_accountIndex = _nbAccounts;
-	_amount = 0;
-	_nbDeposits = 0;
-	_nbWithdrawals = 0;
 	_nbAccounts++;
 	_totalAmount += _amount;
 
@@ -25,13 +25,11 @@ Account::Account(void)
 }
 
 Account::Account(int initial_deposit)
+	:	_accountIndex(_nbAccounts),
+		_amount(initial_deposit),
+		_nbDeposits(0),
+		_nbWithdrawals(0)
 {
-	// TODO: private의 생성자의 의미?
-	// TODO: const 멤버 함수의 의미
-	_accountIndex = _nbAccounts;
-	_amount = initial_deposit;
-	_nbDeposits = 0;
-	_nbWithdrawals = 0;
 	_nbAccounts++;
 	_totalAmount += _amount;
 
@@ -57,10 +55,12 @@ Account::~Account(void)
 void	Account::_displayTimestamp(void)
 {
 	std::time_t	now = std::time(NULL);
-	char	str[100];
+	char	stamp[100];
 
-	if (std::strftime(str, sizeof(str), "%Y%m%d_%H%M%S", std::localtime(&now)))
-		std::cout << "[" << str << "] ";
+	if (std::strftime(
+				stamp, sizeof(stamp),"%Y%m%d_%H%M%S", std::localtime(&now)
+				) != 0)
+		std::cout << "[" << stamp << "] ";
 	else
 		std::cout << "[" << std::setw(15) << "error" << "] ";
 }
