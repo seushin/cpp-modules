@@ -1,17 +1,13 @@
 #include <iostream>
 #include "Karen.hpp"
 
-Karen::Karen()
-{
-}
+Karen::Karen() {}
 
-Karen::~Karen()
-{
-}
+Karen::~Karen() {}
 
 void	Karen::complain(std::string level)
 {
-	std::string	levelList[4] = {
+	const std::string	levelList[4] = {
 		"DEBUG",
 		"INFO",
 		"WARNING",
@@ -32,6 +28,31 @@ void	Karen::complain(std::string level)
 			break ;
 		}
 	}
+}
+
+void	Karen::filter(std::string level)
+{
+	bool	onFilter = false;
+	const std::string	levelList[4] = {
+		"DEBUG",
+		"INFO",
+		"WARNING",
+		"ERROR"
+	};
+
+	for (int i = 0; i < 4; ++i)
+	{
+		if (onFilter || levelList[i] == level)
+		{
+			onFilter = true;
+			complain(levelList[i]);
+			std::cout << std::endl;
+		}
+	}
+	if (not onFilter)
+		std::cout
+			<< "[ Probably complaining about insignificant problems ]"
+			<< std::endl;
 }
 
 void	Karen::debug()

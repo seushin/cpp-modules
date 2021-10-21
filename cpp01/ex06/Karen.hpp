@@ -10,6 +10,7 @@ public:
 	~Karen();
 
 	void	complain(std::string level);
+	void	filter(std::string level);
 
 private:
 	void	debug(void);
