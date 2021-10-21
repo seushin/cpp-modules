@@ -4,7 +4,7 @@ D_SRC := .
 D_OBJ := ./obj
 D_INC := .
 
-SRC := main.cpp
+SRC := main.cpp Replace.cpp
 OBJ := $(addprefix $(D_OBJ)/, $(SRC:.cpp=.o))
 INC := -I$(D_INC)
 
