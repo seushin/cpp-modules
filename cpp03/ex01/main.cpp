@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 struct Test
 {
@@ -57,5 +58,41 @@ int	main()
 		}
 	}
 
+	{
+		Test	t("Scavtrap constructor & destructor");
+		ScavTrap	scav1;
+		ScavTrap	scav2("s2");
+		ScavTrap	scav3(scav2);
+
+		scav1.inspect();
+		scav2.inspect();
+		scav3.inspect();
+
+		// call destructor
+	}
+	{
+		Test	t("Scavtrap functional");
+		ScavTrap	scav1("s1");
+		ScavTrap	scav2("s2");
+
+		{
+			Test	t("member function", true);
+			scav1.attack(scav2.getName());
+			scav1.takeDamage(42);
+			scav1.beRepaired(10);
+			scav1.guardGate();
+		}
+		{
+			Test	t("Assignment operator", true);
+			std::cout << "scav2 = ";
+			scav2.inspect();
+			std::cout << "scav2 = scav1" << std::endl;
+			scav2 = scav1;
+			std::cout << "scav2 = ";
+			scav2.inspect();
+			// rename
+			scav2.setName("s2");
+		}
+	}
 	return (0);
 }

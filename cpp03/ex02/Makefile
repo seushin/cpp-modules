@@ -1,10 +1,10 @@
-NAME := claptrap
+NAME := fragtrap
 
 D_SRC := .
 D_OBJ := ./obj
 D_INC := .
 
-SRC := main.cpp ClapTrap.cpp
+SRC := main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJ := $(addprefix $(D_OBJ)/, $(SRC:.cpp=.o))
 INC := -I$(D_INC)
 
