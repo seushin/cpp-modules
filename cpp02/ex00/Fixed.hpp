@@ -1,3 +1,6 @@
+#ifndef FIXED_HPP
+#define FIXED_HPP
+
 class Fixed
 {
 public:
@@ -13,3 +16,5 @@ private:
 	int	fixed_point;
 	static const int	fractional_bit = 8;
 };
+
+#endif // !FIXED_HPP

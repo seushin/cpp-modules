@@ -108,30 +108,44 @@ bool	Fixed::operator!=(const Fixed &rhs) const
 
 Fixed	Fixed::operator+(const Fixed &rhs) const
 {
-	float	value = toFloat() + rhs.toFloat();
+	Fixed	res;
+	int	value;
 
-	return (Fixed(value));
+	value = getRawBits() + rhs.getRawBits();
+	res.setRawBits(value);
+	return (res);
 }
 
 Fixed	Fixed::operator-(const Fixed &rhs) const
 {
-	float	value = toFloat() - rhs.toFloat();
+	Fixed	res;
+	int	value;
 
-	return (Fixed(value));
+	value = getRawBits() - rhs.getRawBits();
+	res.setRawBits(value);
+	return (res);
 }
 
 Fixed	Fixed::operator*(const Fixed &rhs) const
 {
-	float	value = toFloat() * rhs.toFloat();
+	Fixed	res;
+	long long	value;
 
-	return (Fixed(value));
+	value = static_cast<long long>(getRawBits()) * rhs.getRawBits();
+	value >>= fractional_bit;
+	res.setRawBits(value);
+	return (res);
 }
 
 Fixed	Fixed::operator/(const Fixed &rhs) const
 {
-	float	value = toFloat() / rhs.toFloat();
+	Fixed	res;
+	long long	value;
 
-	return (Fixed(value));
+	value = (static_cast<long long>(getRawBits()) << fractional_bit);
+	value /= rhs.getRawBits();
+	res.setRawBits(value);
+	return (res);
 }
 
 Fixed	&Fixed::operator++()
