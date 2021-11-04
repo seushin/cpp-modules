@@ -1,3 +1,6 @@
+#ifndef REPLACE_HPP
+#define REPLACE_HPP
+
 #include <string>
 
 class Replace
@@ -16,3 +19,5 @@ private:
 			std::string &line, const std::string &src, const std::string &dst
 			);
 };
+
+#endif // !REPLACE_HPP
