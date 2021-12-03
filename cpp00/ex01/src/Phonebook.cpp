@@ -6,7 +6,7 @@
 /*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 18:16:47 by seushin           #+#    #+#             */
-/*   Updated: 2021/12/03 14:08:07 by seushin          ###   ########.fr       */
+/*   Updated: 2021/12/03 14:36:44 by seushin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	Phonebook::print_divider(void)
 void	Phonebook::print_row(int index)
 {
 	std::cout << std::setw(column_width) << index;
-	for (int type = 0; type < C_SIZE; ++type)
+	for (int type = 0; type <= C_NICKNAME; ++type)
 	{
 		std::string	column = contact[index].get_info(type);
 
@@ -72,7 +72,7 @@ void	Phonebook::print_contact_list(void)
 {
 	print_divider();
 	std::cout << std::setw(column_width) << "Index";
-	for (int type = 0; type < C_SIZE; ++type)
+	for (int type = 0; type <= C_NICKNAME; ++type)
 	{
 		std::cout << '|'
 			<< std::setw(column_width) << Contact::get_type_label(type);
