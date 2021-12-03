@@ -6,7 +6,7 @@
 /*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 18:16:40 by seushin           #+#    #+#             */
-/*   Updated: 2021/11/28 00:19:20 by seushin          ###   ########.fr       */
+/*   Updated: 2021/12/03 14:08:24 by seushin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,18 @@ std::string	Contact::get_info(int type)
 	return (info[type]);
 }
 
-int	Contact::get_info_size(void)
-{
-	return (C_SIZE);
-}
-
 std::string	Contact::get_type_label(int type)
 {
 	if (type == C_FIRST_NAME)
-		return ("first name");
+		return ("First name");
 	else if (type == C_LAST_NAME)
-		return ("last name");
+		return ("Last name");
 	else if (type == C_NICKNAME)
-		return ("nickname");
+		return ("Nickname");
 	else if (type == C_PHONE_NUMBER)
-		return ("phone number");
+		return ("Phone number");
 	else if (type == C_SECRET)
-		return ("darkest secret");
+		return ("Darkest secret");
 	else
-		return ("undefined type!");
+		return ("Undefined type!");
 }

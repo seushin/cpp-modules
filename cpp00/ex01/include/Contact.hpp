@@ -6,7 +6,7 @@
 /*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 18:16:53 by seushin           #+#    #+#             */
-/*   Updated: 2021/11/27 19:45:50 by seushin          ###   ########.fr       */
+/*   Updated: 2021/12/03 14:08:18 by seushin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ class Contact
 public:
 	Contact();
 
-	int	get_info_size(void);
 	static std::string	get_type_label(int type);
 	void	set_info(std::string str, int type);
 	std::string	get_info(int type);

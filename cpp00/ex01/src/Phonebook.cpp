@@ -6,7 +6,7 @@
 /*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 18:16:47 by seushin           #+#    #+#             */
-/*   Updated: 2021/11/27 19:45:39 by seushin          ###   ########.fr       */
+/*   Updated: 2021/12/03 14:08:07 by seushin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include <string>
 #include "Phonebook.hpp"
 
-Phonebook::Phonebook() : contact_count(0), column_width(10) {}
+Phonebook::Phonebook()
+	:	contact_count(0), column_width(10) {}
 
 void	Phonebook::add(void)
 {
@@ -29,7 +30,7 @@ void	Phonebook::add(void)
 
 	Contact	&target = contact[contact_count];
 
-	for (int type = 0; type < target.get_info_size(); ++type)
+	for (int type = 0; type < C_SIZE; ++type)
 	{
 		std::string	info;
 
@@ -48,29 +49,14 @@ void	Phonebook::print_divider(void)
 	std::cout << std::setfill(' ') << std::endl;
 }
 
-void	Phonebook::print_header(void)
-{
-	print_divider();
-
-	std::cout << std::setw(column_width) << "index";
-	for (int type = 0; type <= C_NICKNAME; ++type)
-	{
-		std::cout << '|'
-			<< std::setw(column_width) << Contact::get_type_label(type);
-	}
-	std::cout << std::endl;
-
-	print_divider();
-}
-
 void	Phonebook::print_row(int index)
 {
 	std::cout << std::setw(column_width) << index;
-	for (int type = 0; type <= C_NICKNAME; ++type)
+	for (int type = 0; type < C_SIZE; ++type)
 	{
 		std::string	column = contact[index].get_info(type);
 
-		if ((int)column.length() > column_width)
+		if (static_cast<int>(column.length()) > column_width)
 		{
 			column = column.substr(0, column_width);
 			column[column_width - 1] = '.';
@@ -82,24 +68,31 @@ void	Phonebook::print_row(int index)
 	print_divider();
 }
 
-void	Phonebook::print_contacts_by_table(void)
+void	Phonebook::print_contact_list(void)
 {
-	print_header();
+	print_divider();
+	std::cout << std::setw(column_width) << "Index";
+	for (int type = 0; type < C_SIZE; ++type)
+	{
+		std::cout << '|'
+			<< std::setw(column_width) << Contact::get_type_label(type);
+	}
+	std::cout << std::endl;
+	print_divider();
+
 	for (int i = 0; i < contact_count; ++i)
 		print_row(i);
 }
 
-void	Phonebook::print_contact_info(int index)
+void	Phonebook::print_detail_info(int index)
 {
 	print_divider();
-
-	std::cout << "index: " << index << std::endl;
-	for (int type = 0; type < contact[index].get_info_size(); ++type)
+	std::cout << "Index: " << index << std::endl;
+	for (int type = 0; type < C_SIZE; ++type)
 	{
 		std::cout << contact[index].get_type_label(type) << ": "
 			<< contact[index].get_info(type) << std::endl;
 	}
-
 	print_divider();
 }
 
@@ -109,7 +102,7 @@ void	Phonebook::search_contact_by_index(void)
 
 	if (contact_count < 1)
 		return ;
-	std::cout << "search by index > ";
+	std::cout << "Search by index > ";
 	std::cin >> index;
 	if (std::cin.fail())
 	{
@@ -119,13 +112,13 @@ void	Phonebook::search_contact_by_index(void)
 	else if (!(0 <= index && index < contact_count))
 		std::cout << "Error: out of index" << std::endl;
 	else
-		print_contact_info(index);
+		print_detail_info(index);
 	/* flush buffer */
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 void	Phonebook::search(void)
 {
-	print_contacts_by_table();
+	print_contact_list();
 	search_contact_by_index();
 }
