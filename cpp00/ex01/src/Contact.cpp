@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/27 18:16:40 by seushin           #+#    #+#             */
+/*   Updated: 2021/11/28 00:19:20 by seushin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <string>
 #include "Contact.hpp"
 
 Contact::Contact()
 {
-	for (int i = 0; i < get_info_size(); ++i)
+	for (int i = 0; i < C_SIZE; ++i)
 		info[i] = "";
 }
 
@@ -20,7 +32,7 @@ std::string	Contact::get_info(int type)
 
 int	Contact::get_info_size(void)
 {
-	return (info_size);
+	return (C_SIZE);
 }
 
 std::string	Contact::get_type_label(int type)

@@ -1,13 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/27 18:16:53 by seushin           #+#    #+#             */
+/*   Updated: 2021/11/27 19:45:50 by seushin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 
 #include <string>
 
-#define C_FIRST_NAME 0
-#define C_LAST_NAME 1
-#define C_NICKNAME 2
-#define C_PHONE_NUMBER 3
-#define C_SECRET 4
+typedef enum e_info
+{
+	C_FIRST_NAME = 0,
+	C_LAST_NAME,
+	C_NICKNAME,
+	C_PHONE_NUMBER,
+	C_SECRET,
+	C_SIZE
+}	t_info;
 
 class Contact
 {
@@ -20,8 +36,7 @@ public:
 	std::string	get_info(int type);
 
 private:
-	static const int	info_size = 5;
-	std::string	info[info_size];
+	std::string	info[C_SIZE];
 };
 
 #endif // !CONTACT_HPP

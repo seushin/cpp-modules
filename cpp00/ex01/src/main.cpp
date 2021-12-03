@@ -1,13 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/27 18:16:44 by seushin           #+#    #+#             */
+/*   Updated: 2021/11/27 18:20:21 by seushin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <locale>
 #include "Phonebook.hpp"
 
-void	upper_string(std::string &str)
+std::string	upper_string(std::string &str)
 {
 	std::locale	loc("en_US.UTF-8");
 
 	for (std::string::size_type i = 0; i < str.length(); ++i)
 		str[i] = std::toupper(str[i], loc);
+	return (str);
 }
 
 int	main(void)
@@ -19,7 +32,7 @@ int	main(void)
 	{
 		std::cout << "command > ";
 		std::getline(std::cin, cmd);
-		upper_string(cmd);
+		cmd = upper_string(cmd);
 		if (std::cin.eof() || cmd == "EXIT")
 			break ;
 		else if (cmd == "ADD")
