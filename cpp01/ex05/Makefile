@@ -11,7 +11,7 @@ INC := -I$(D_INC)
 LIB :=
 
 CXX := clang++
-CPPFLAGS := -std=c++98 -Wall -Wextra -Werror
+CXXFLAGS := -std=c++98 -Wall -Wextra -Werror
 RM := rm -f
 
 # FORMAT
@@ -27,7 +27,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@printf "$(GREEN)🚀 Build $(RESET)$@$(CRLF)"
-	@$(CXX) $(CPPFLAGS) $(INC) -o $@ $(OBJ) $(LIB)
+	@$(CXX) $(CXXFLAGS) $(INC) -o $@ $(OBJ) $(LIB)
 
 $(OBJ): | $(D_OBJ)
 
@@ -36,7 +36,7 @@ $(D_OBJ):
 
 $(D_OBJ)/%.o: $(D_SRC)/%.cpp
 	@printf "$(YELLOW)🔨 compiling:$(RESET) $<$(CRLF)"
-	@$(CXX) $(CPPFLAGS) $(INC) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) $(INC) -c $< -o $@
 
 clean:
 	@printf "$(YELLOW)🧹 Deleting all object from $(NAME)...$(RESET)$(CRLF)"
