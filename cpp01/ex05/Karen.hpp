@@ -6,7 +6,7 @@
 /*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 17:51:12 by seushin           #+#    #+#             */
-/*   Updated: 2021/12/09 17:24:13 by seushin          ###   ########.fr       */
+/*   Updated: 2021/12/09 17:59:32 by seushin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ public:
 	Karen();
 	~Karen();
 
+	typedef void (Karen::*karenFuncPtr)(void);
 	void	complain(std::string level);
 
 private:

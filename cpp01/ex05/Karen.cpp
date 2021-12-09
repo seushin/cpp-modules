@@ -6,14 +6,12 @@
 /*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 17:51:10 by seushin           #+#    #+#             */
-/*   Updated: 2021/12/09 17:18:51 by seushin          ###   ########.fr       */
+/*   Updated: 2021/12/09 17:59:23 by seushin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Karen.hpp"
-
-typedef void (Karen::*karenFuncPtr)(void);
 
 Karen::Karen() {}
 
