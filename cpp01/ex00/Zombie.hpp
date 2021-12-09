@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/06 14:55:20 by seushin           #+#    #+#             */
+/*   Updated: 2021/12/06 14:55:21 by seushin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ZOMBIE_HPP
 #define ZOMBIE_HPP
 
@@ -7,6 +19,7 @@ class Zombie
 {
 public:
 	Zombie();
+	Zombie(std::string name);
 	~Zombie();
 
 	void	announce(void);

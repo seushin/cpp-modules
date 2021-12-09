@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Karen.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/08 20:14:52 by seushin           #+#    #+#             */
+/*   Updated: 2021/12/09 17:18:46 by seushin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "Karen.hpp"
 
@@ -7,45 +19,26 @@ Karen::~Karen() {}
 
 void	Karen::complain(std::string level)
 {
-	const std::string	levelList[4] = {
+	std::string	levelList[4] = {
 		"DEBUG",
 		"INFO",
 		"WARNING",
 		"ERROR"
 	};
-	void (Karen::*funcList[4])(void) = {
+	karenFuncPtr	funcList[4] = {
 		&Karen::debug,
 		&Karen::info,
 		&Karen::warning,
 		&Karen::error
 	};
-
-	for (int i = 0; i < 4; ++i)
-	{
-		if (levelList[i] == level)
-		{
-			(this->*(funcList[i]))();
-			break ;
-		}
-	}
-}
-
-void	Karen::filter(std::string level)
-{
 	bool	onFilter = false;
-	const std::string	levelList[4] = {
-		"DEBUG",
-		"INFO",
-		"WARNING",
-		"ERROR"
-	};
 
 	for (int i = 0; i < 4; ++i)
 	{
 		if (onFilter || levelList[i] == level)
 		{
 			onFilter = true;
-			complain(levelList[i]);
+			(this->*funcList[i])();
 			std::cout << std::endl;
 		}
 	}

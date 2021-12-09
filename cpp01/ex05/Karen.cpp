@@ -1,13 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Karen.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/06 17:51:10 by seushin           #+#    #+#             */
+/*   Updated: 2021/12/09 17:18:51 by seushin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "Karen.hpp"
 
-Karen::Karen()
-{
-}
+typedef void (Karen::*karenFuncPtr)(void);
 
-Karen::~Karen()
-{
-}
+Karen::Karen() {}
+
+Karen::~Karen() {}
 
 void	Karen::complain(std::string level)
 {
@@ -17,7 +27,7 @@ void	Karen::complain(std::string level)
 		"WARNING",
 		"ERROR"
 	};
-	void (Karen::*funcList[4])(void) = {
+	karenFuncPtr funcList[4] = {
 		&Karen::debug,
 		&Karen::info,
 		&Karen::warning,
@@ -28,7 +38,7 @@ void	Karen::complain(std::string level)
 	{
 		if (levelList[i] == level)
 		{
-			(this->*(funcList[i]))();
+			(this->*funcList[i])();
 			break ;
 		}
 	}

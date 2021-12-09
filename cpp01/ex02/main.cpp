@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/06 14:55:51 by seushin           #+#    #+#             */
+/*   Updated: 2021/12/06 15:31:46 by seushin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <string>
 
@@ -6,13 +18,6 @@ int	main()
 	std::string	str = "HI THIS IS BRAIN";
 	std::string	*stringPTR = &str;
 	std::string	&stringREF = str;
-	/*
-	 * std::string	*stringPTR;
-	 * stringPTR = &str; -> OK
-	 *
-	 * std::string	&stringREF; -> ERROR!
-	 * stringREF = str;
-	 */
 
 	std::cout << ">> create string, pointer, referer" << std::endl;
 	std::cout << "std::string	str = \"HI THIS IS BRAIN\";" << std::endl;

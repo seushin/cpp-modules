@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Karen.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/06 17:51:12 by seushin           #+#    #+#             */
+/*   Updated: 2021/12/09 17:24:13 by seushin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef KAREN_HPP
 #define KAREN_HPP
 
@@ -16,7 +28,6 @@ private:
 	void	info(void);
 	void	warning(void);
 	void	error(void);
-	
 };
 
 #endif // !KAREN_HPP
