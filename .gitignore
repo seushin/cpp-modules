@@ -1,5 +1,12 @@
+.DS_Store
+.idea/
+
 # Prerequisites
 *.d
+
+# CMake
+**/cmake-build-debug
+**/CmakeCache.txt
 
 # Compiled Object files
 *.slo

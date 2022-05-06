@@ -1,32 +1,26 @@
-NAME := 
+NAME := template
 
-D_SRC := ./src
+D_SRC := .
 D_OBJ := ./obj
 D_INC := ./include
 
 SRC := main.cpp
 OBJ := $(addprefix $(D_OBJ)/, $(SRC:.cpp=.o))
 INC := -I$(D_INC)
-LIB :=
 
 CXX := clang++
 CXXFLAGS := -std=c++98 -Wall -Wextra -Werror
 RM := rm -f
 
-# FORMAT
-GREEN = \033[32m
-YELLOW = \033[33m
-RESET = \033[0m
-LF = \r\033[K
-CRLF = \n$(LF)
+ifeq ($(DEBUG), 1)
+CXXFLAGS += -g -fsanitize=address
+endif
 
-.PHONY: all clean fclean re
-
+.PHONY: all
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@printf "$(GREEN)🚀 Build $(RESET)$@$(CRLF)"
-	@$(CXX) $(CXXFLAGS) $(INC) -o $@ $(OBJ) $(LIB)
+	$(CXX) $(CXXFLAGS) $(INC) -o $@ $(OBJ) $(LIB)
 
 $(OBJ): | $(D_OBJ)
 
@@ -34,15 +28,15 @@ $(D_OBJ):
 	@mkdir -p $(D_OBJ)
 
 $(D_OBJ)/%.o: $(D_SRC)/%.cpp
-	@printf "$(YELLOW)🔨 compiling:$(RESET) $<$(CRLF)"
-	@$(CXX) $(CXXFLAGS) $(INC) -c $< -o $@
+	$(CXX) $(CXXFLAGS) $(INC) -c $< -o $@
 
+.PHONY: clean
 clean:
-	@printf "$(YELLOW)🧹 Deleting all object from $(NAME)...$(RESET)$(CRLF)"
-	@$(RM) -r $(D_OBJ)
+	$(RM) -r $(D_OBJ)
 
+.PHONY: fclean
 fclean: clean
-	@printf "$(YELLOW)🧹 Deleting all excutable from $(NAME)...$(RESET)$(CRLF)"
-	@$(RM) $(NAME)
+	$(RM) $(NAME)
 
+.PHONY: re
 re: fclean all
