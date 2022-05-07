@@ -10,7 +10,6 @@ INC := -I$(D_INC)
 
 CXX := c++
 CXXFLAGS := -std=c++98 -Wall -Wextra -Werror
-RM := rm -f
 
 ifeq ($(DEBUG), 1)
 CXXFLAGS += -g -fsanitize=address
