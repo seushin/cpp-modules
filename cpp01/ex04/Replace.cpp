@@ -49,9 +49,9 @@ int Replace::replace(std::string dist, std::string source)
 		std::string line;
 
 		std::getline(inputFile, line);
-		outputFile << strReplace(line, dist, source);
 		if (!inputFile.eof())
-			outputFile << std::endl;
+			line.append("\n");
+		outputFile << strReplace(line, dist, source);
 	}
 
 	if (inputFile.bad())
