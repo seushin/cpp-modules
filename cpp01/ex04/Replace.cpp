@@ -7,16 +7,17 @@ Replace::Replace(std::string fileName) : fileName_(fileName) {}
 std::string strReplace(std::string str, std::string dist, std::string source)
 {
 	std::string res;
+	std::string::size_type startPos= 0;
 	std::string::size_type pos = str.find(dist);
 
 	while (pos != std::string::npos)
 	{
-		res.append(str, 0, pos);
+		res.append(str, startPos, pos - startPos);
 		res.append(source);
-		str = str.substr(pos + dist.size());
-		pos = str.find(dist);
+		startPos = pos + dist.size();
+		pos = str.find(dist, startPos);
 	}
-	res.append(str);
+	res.append(str, startPos, std::string::npos);
 	return (res);
 }
 
@@ -24,39 +25,37 @@ int Replace::replace(std::string dist, std::string source)
 {
 	if (dist.size() == 0)
 	{
-		std::cout << "error: dist must be given" << std::endl;
+		std::cerr << "error: dist must be given" << std::endl;
 		return (1);
 	}
 
 	std::ifstream inputFile(fileName_);
+	std::ofstream outputFile;
 
 	if (inputFile.fail())
 	{
-		std::cout << "error: open file failed" << std::endl;
+		std::cerr << "error: open file failed" << std::endl;
 		return (1);
 	}
-
-	std::ofstream outputFile(fileName_ + ".replace", std::fstream::trunc);
-
+	outputFile.open(fileName_ + ".replace", std::fstream::trunc);
 	if (outputFile.fail())
 	{
-		std::cout << "error: create .replace file failed" << std::endl;
+		std::cerr << "error: create .replace file failed" << std::endl;
 		return (1);
 	}
 
-	while (!inputFile.eof())
-	{
-		std::string line;
+	std::string line;
 
-		std::getline(inputFile, line);
+	while (std::getline(inputFile, line) && outputFile.good())
+	{
 		if (!inputFile.eof())
 			line.append("\n");
 		outputFile << strReplace(line, dist, source);
 	}
 
-	if (inputFile.bad())
+	if (inputFile.bad() || outputFile.fail())
 	{
-		std::cout << "error: read input file failed" << std::endl;
+		std::cerr << "error: replace '" << dist << "' failed" << std::endl;
 		return (1);
 	}
 
