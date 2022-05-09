@@ -2,14 +2,10 @@
 #include <cmath>
 #include <iostream>
 
-Fixed::Fixed() : raw_(0)
-{
-	std::cout << "Default constructor called" << std::endl;
-}
+Fixed::Fixed() : raw_(0) {}
 
 Fixed::Fixed(const int n)
 {
-	std::cout << "Int constructor called" << std::endl;
 	int fixed = n << fracBit_;
 
 	raw_ = fixed;
@@ -17,7 +13,6 @@ Fixed::Fixed(const int n)
 
 Fixed::Fixed(const float n)
 {
-	std::cout << "Float constructor called" << std::endl;
 	float fixed = std::roundf(n * (1 << fracBit_));
 
 	raw_ = static_cast<int>(fixed);
@@ -25,13 +20,11 @@ Fixed::Fixed(const float n)
 
 Fixed::Fixed(const Fixed &other)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = other;
 }
 
 Fixed &Fixed::operator=(const Fixed &rhs)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	raw_ = rhs.getRawBits();
 	return (*this);
 }
@@ -130,7 +123,6 @@ Fixed Fixed::operator--(int)
 
 	operator--();
 	return (prev);
-
 }
 
 std::ostream &operator<<(std::ostream &o, const Fixed &fixed)
@@ -139,10 +131,7 @@ std::ostream &operator<<(std::ostream &o, const Fixed &fixed)
 	return (o);
 }
 
-Fixed::~Fixed()
-{
-	std::cout << "Destructor called" << std::endl;
-}
+Fixed::~Fixed() {}
 
 int Fixed::getRawBits() const
 {
@@ -172,20 +161,20 @@ float Fixed::toFloat() const
 
 Fixed &Fixed::max(Fixed &a, Fixed &b)
 {
-	return (a.getRawBits() > b.getRawBits() ? a : b);
+	return (a > b ? a : b);
 }
 
 const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
 {
-	return (a.getRawBits() > b.getRawBits() ? a : b);
+	return (a > b ? a : b);
 }
 
 Fixed &Fixed::min(Fixed &a, Fixed &b)
 {
-	return (a.getRawBits() < b.getRawBits() ? a : b);
+	return (a < b ? a : b);
 }
 
 const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
 {
-	return (a.getRawBits() < b.getRawBits() ? a : b);
+	return (a < b ? a : b);
 }
