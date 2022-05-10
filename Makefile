@@ -1,6 +1,6 @@
 GOALS = all fclean
 
-MODULES := cpp01 cpp02
+MODULES := cpp01 cpp02 cpp03
 
 ifeq ($(DEBUG), 1)
 DEBUG := DEBUG=1
