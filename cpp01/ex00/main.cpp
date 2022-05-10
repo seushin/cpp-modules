@@ -8,8 +8,9 @@ int main()
 		zombie.announce();
 	}
 	{
-		Zombie *zombie = newZombie("bar");
+		Zombie *zombie;
 
+		zombie = newZombie("bar");
 		zombie->announce();
 		delete zombie;
 	}

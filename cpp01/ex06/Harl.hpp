@@ -3,6 +3,15 @@
 
 #include <string>
 
+enum E_LEVEL
+{
+	DEBUG_LEVEL,
+	INFO_LEVEL,
+	WARNING_LEVEL,
+	ERROR_LEVEL,
+	LEVEL_COUNT,
+};
+
 class Harl
 {
 public:
@@ -14,6 +23,9 @@ private:
 	void info();
 	void warning();
 	void error();
+	static const std::string levels[LEVEL_COUNT];
+	static const HarlFuncPTR funcPTRs[LEVEL_COUNT];
+	E_LEVEL findLevel(const std::string &level);
 };
 
 #endif//HARL_HPP

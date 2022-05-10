@@ -4,20 +4,20 @@
 
 Replace::Replace(std::string fileName) : fileName_(fileName) {}
 
-std::string strReplace(std::string str, std::string dist, std::string source)
+std::string strReplace(std::string line, std::string dist, std::string source)
 {
 	std::string res;
 	std::string::size_type startPos= 0;
-	std::string::size_type pos = str.find(dist);
+	std::string::size_type pos = line.find(dist);
 
 	while (pos != std::string::npos)
 	{
-		res.append(str, startPos, pos - startPos);
+		res.append(line, startPos, pos - startPos);
 		res.append(source);
 		startPos = pos + dist.size();
-		pos = str.find(dist, startPos);
+		pos = line.find(dist, startPos);
 	}
-	res.append(str, startPos, std::string::npos);
+	res.append(line, startPos, std::string::npos);
 	return (res);
 }
 

@@ -3,6 +3,8 @@
 
 #include <string>
 
+#define LEVEL_COUNT 4
+
 class Harl
 {
 public:
@@ -14,6 +16,8 @@ private:
 	void info();
 	void warning();
 	void error();
+	static const std::string levels[LEVEL_COUNT];
+	static const HarlFuncPTR funcPTRs[LEVEL_COUNT];
 };
 
 #endif//HARL_HPP

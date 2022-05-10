@@ -1,6 +1,19 @@
 #include "Harl.hpp"
 #include <iostream>
 
+const std::string Harl::levels[LEVEL_COUNT] = {
+		"DEBUG",
+		"INFO",
+		"WARNING",
+		"ERROR",
+};
+const Harl::HarlFuncPTR Harl::funcPTRs[LEVEL_COUNT] = {
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error,
+};
+
 void Harl::debug()
 {
 	std::cout << "[ DEBUG ]" << std::endl
@@ -31,32 +44,40 @@ void Harl::error()
 			  << std::endl;
 }
 
+E_LEVEL Harl::findLevel(const std::string &level)
+{
+
+	for (int i = 0; i < LEVEL_COUNT; ++i)
+	{
+		E_LEVEL l = static_cast<E_LEVEL>(i);
+
+		if (level == levels[l])
+			return (l);
+	}
+	return (LEVEL_COUNT);
+}
+
 void Harl::complain(std::string level)
 {
-	std::string labels[] = {
-			"DEBUG",
-			"INFO",
-			"WARNING",
-			"ERROR",
-	};
-	HarlFuncPTR funcPTRs[] = {
-			&Harl::debug,
-			&Harl::info,
-			&Harl::warning,
-			&Harl::error,
-	};
-	bool filter = false;
+	const E_LEVEL filter = findLevel(level);
 
-	for (int i = 0; i < 4; ++i)
+	switch (filter)
 	{
-		if (filter || labels[i] == level)
-		{
-			filter = true;
-			(this->*funcPTRs[i])();
+		case DEBUG_LEVEL:
+			(this->*funcPTRs[DEBUG_LEVEL])();
 			std::cout << std::endl;
-		}
+		case INFO_LEVEL:
+			(this->*funcPTRs[INFO_LEVEL])();
+			std::cout << std::endl;
+		case WARNING_LEVEL:
+			(this->*funcPTRs[WARNING_LEVEL])();
+			std::cout << std::endl;
+		case ERROR_LEVEL:
+			(this->*funcPTRs[ERROR_LEVEL])();
+			std::cout << std::endl;
+			break;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]"
+					  << std::endl;
 	}
-	if (!filter)
-		std::cout << "[ Probably complaining about insignificant problems ]"
-				  << std::endl;
 }

@@ -3,11 +3,6 @@
 int main()
 {
 	{
-		Zombie zombie;
-
-		zombie.announce();
-	}
-	{
 		const int N = 5;
 		Zombie *zombies = zombieHorde(N, "foo");
 

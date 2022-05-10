@@ -1,6 +1,19 @@
 #include "Harl.hpp"
 #include <iostream>
 
+const std::string Harl::levels[LEVEL_COUNT] = {
+		"DEBUG",
+		"INFO",
+		"WARNING",
+		"ERROR",
+};
+const Harl::HarlFuncPTR Harl::funcPTRs[LEVEL_COUNT] = {
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error,
+};
+
 void Harl::debug()
 {
 	std::cout << "[ DEBUG ]" << std::endl
@@ -33,22 +46,11 @@ void Harl::error()
 
 void Harl::complain(std::string level)
 {
-	std::string labels[] = {
-			"DEBUG",
-			"INFO",
-			"WARNING",
-			"ERROR",
-	};
-	HarlFuncPTR funcPTRs[] = {
-			&Harl::debug,
-			&Harl::info,
-			&Harl::warning,
-			&Harl::error,
-	};
+	const int len = sizeof(levels) / sizeof(std::string);
 
-	for (int i = 0; i < 4; ++i)
+	for (int i = 0; i < len; ++i)
 	{
-		if (labels[i] == level)
+		if (levels[i] == level)
 		{
 			(this->*funcPTRs[i])();
 			return;
