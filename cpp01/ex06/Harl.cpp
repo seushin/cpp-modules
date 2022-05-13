@@ -44,22 +44,20 @@ void Harl::error()
 			  << std::endl;
 }
 
-E_LEVEL Harl::findLevel(const std::string &level)
+Harl::ELevel Harl::findLevel(const std::string &level)
 {
 
 	for (int i = 0; i < LEVEL_COUNT; ++i)
 	{
-		E_LEVEL l = static_cast<E_LEVEL>(i);
-
-		if (level == levels[l])
-			return (l);
+		if (level == levels[i])
+			return (static_cast<ELevel>(i));
 	}
 	return (LEVEL_COUNT);
 }
 
 void Harl::complain(std::string level)
 {
-	const E_LEVEL filter = findLevel(level);
+	const ELevel filter = findLevel(level);
 
 	switch (filter)
 	{
