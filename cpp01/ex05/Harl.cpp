@@ -46,9 +46,7 @@ void Harl::error()
 
 void Harl::complain(std::string level)
 {
-	const int len = sizeof(levels) / sizeof(std::string);
-
-	for (int i = 0; i < len; ++i)
+	for (int i = 0; i < LEVEL_COUNT; ++i)
 	{
 		if (levels[i] == level)
 		{
