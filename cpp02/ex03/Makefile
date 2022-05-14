@@ -4,7 +4,7 @@ D_SRC := .
 D_OBJ := ./obj
 D_INC := .
 
-SRC := main.cpp Fixed.cpp Point.cpp
+SRC := main.cpp Fixed.cpp Point.cpp bsp.cpp
 OBJ := $(addprefix $(D_OBJ)/, $(SRC:.cpp=.o))
 INC := -I$(D_INC)
 
