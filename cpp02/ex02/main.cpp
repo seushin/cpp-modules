@@ -40,17 +40,17 @@ int main()
 		std::cout << "b is " << b << std::endl;
 		std::cout << "c is " << c << std::endl;
 
-		std::cout << "a + b = " << (a + c) << std::endl;
-		std::cout << "a - b = " << (a - c) << std::endl;
-		std::cout << "a * b = " << (a * c) << std::endl;
-		std::cout << "a / b = " << (a / c) << std::endl;
+		std::cout << "a + c = " << (a + c) << std::endl;
+		std::cout << "a - c = " << (a - c) << std::endl;
+		std::cout << "a * b = " << (a * b) << std::endl;
+		std::cout << "a / b = " << (a / b) << std::endl;
 	}
 
 	std::cout << std::endl
 			  << "비교연산" << std::endl;
 	{
 		Fixed a(42);
-		Fixed b(42.1f);
+		Fixed b(a++);
 
 		std::cout << "a is " << a << std::endl;
 		std::cout << "b is " << b << std::endl;
