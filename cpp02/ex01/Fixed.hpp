@@ -19,7 +19,7 @@ public:
 
 private:
 	int raw_;
-	static const int fracBit_ = 8;
+	static const int fracBit_;
 };
 
 std::ostream &operator<<(std::ostream &o, const Fixed &fixed);

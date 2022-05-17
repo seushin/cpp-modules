@@ -13,7 +13,7 @@ public:
 
 private:
 	int raw_;
-	static const int fracBit_ = 8;
+	static const int fracBit_;
 };
 
 #endif//FIXED_HPP

@@ -2,6 +2,8 @@
 #include <cmath>
 #include <iostream>
 
+const int Fixed::fracBit_ = 8;
+
 Fixed::Fixed() : raw_(0) {}
 
 Fixed::Fixed(const int n)
