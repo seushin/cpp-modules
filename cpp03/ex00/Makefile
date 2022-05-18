@@ -1,10 +1,10 @@
-NAME := claptrap
+NAME := ex00
 
 D_SRC := .
 D_OBJ := ./obj
 D_INC := .
 
-SRC := main.cpp
+SRC := main.cpp ClapTrap.cpp
 OBJ := $(addprefix $(D_OBJ)/, $(SRC:.cpp=.o))
 INC := -I$(D_INC)
 
@@ -39,3 +39,7 @@ fclean: clean
 
 .PHONY: re
 re: fclean all
+
+.PHONY: test
+test: re
+	./$(NAME)
