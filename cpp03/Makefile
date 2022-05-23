@@ -1,4 +1,4 @@
-GOALS := all fclean
+GOALS := all fclean test
 
 EXERCISE := $(wildcard ./ex*)
 

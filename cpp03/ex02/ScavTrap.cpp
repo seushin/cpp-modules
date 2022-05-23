@@ -5,25 +5,23 @@
 #define ST_EP 50
 #define ST_AD 20
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap() : ClapTrap("ST")
 {
 	std::cout << "ScavTrap default constructor called" << std::endl;
-	name_ = "ST";
 	hitPoint_ = ST_HP;
 	energyPoint_ = ST_EP;
 	attackDamage_ = ST_AD;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "ScavTrap string constructor called" << std::endl;
-	name_ = name;
 	hitPoint_ = ST_HP;
 	energyPoint_ = ST_EP;
 	attackDamage_ = ST_AD;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other)
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap()
 {
 	std::cout << "ScavTrap copy constructor called" << std::endl;
 	*this = other;

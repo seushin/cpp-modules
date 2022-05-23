@@ -12,6 +12,7 @@ int main()
 
 		assert(me.getHitPoint() == 10);
 		assert(me.getEnergyPoint() == 10);
+		assert(me.getAttackDamage() == 0);
 
 		me.attack(enemy.getName());
 		assert(me.getEnergyPoint() == 9);
@@ -36,6 +37,7 @@ int main()
 
 		assert(me.getHitPoint() == 100);
 		assert(me.getEnergyPoint() == 50);
+		assert(me.getAttackDamage() == 20);
 
 		me.attack(enemy.getName());
 		assert(me.getEnergyPoint() == 49);
@@ -61,23 +63,35 @@ int main()
 		FragTrap me("me");
 		FragTrap enemy("enemy");
 
+		assert(me.getHitPoint() == 100);
+		assert(me.getEnergyPoint() == 100);
+		assert(me.getAttackDamage() == 30);
 		std::cout << me << std::endl;
 
 		me.attack(enemy.getName());
+		assert(me.getEnergyPoint() == 99);
 		std::cout << me << std::endl;
 
 		me.takeDamage(enemy.getAttackDamage());
+		assert(me.getHitPoint() == 70);
+		assert(me.getEnergyPoint() == 99);
 		std::cout << me << std::endl;
 
 		me.beRepaired(10);
+		assert(me.getHitPoint() == 80);
+		assert(me.getEnergyPoint() == 98);
 		std::cout << me << std::endl;
 
 		me.highFivesGuys();
+		assert(me.getEnergyPoint() == 97);
 
 		me.takeDamage(200);
+		assert(me.getHitPoint() == 0);
+		assert(me.getEnergyPoint() == 97);
 		std::cout << me << std::endl;
 
 		me.attack(enemy.getName());
+		assert(me.getEnergyPoint() == 97);
 		std::cout << me << std::endl;
 	}
 

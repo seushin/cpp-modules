@@ -5,10 +5,9 @@
 #define FT_EP 100
 #define FT_AD 30
 
-FragTrap::FragTrap() : ClapTrap()
+FragTrap::FragTrap() : ClapTrap("FT")
 {
 	std::cout << "FragTrap default constructor called" << std::endl;
-	name_ = "FT";
 	hitPoint_ = FT_HP;
 	energyPoint_ = FT_EP;
 	attackDamage_ = FT_AD;
