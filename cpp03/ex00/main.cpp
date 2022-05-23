@@ -7,9 +7,11 @@ int main()
 	ClapTrap enemy("enemy");
 
 	std::cout << me << std::endl;
-	me.attack(enemy.getName());
 
-	me.takeDamage(5);
+	me.attack(enemy.getName());
+	std::cout << me << std::endl;
+
+	me.takeDamage(enemy.getAttackDamage());
 	std::cout << me << std::endl;
 
 	me.beRepaired(10);
