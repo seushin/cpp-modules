@@ -39,3 +39,8 @@ fclean: clean
 
 .PHONY: re
 re: fclean all
+
+.PHONY: test
+test:
+	$(MAKE) re DEBUG=1
+	./$(NAME)
