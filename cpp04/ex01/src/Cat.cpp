@@ -9,7 +9,7 @@ Cat::Cat()
 	brain = new Brain();
 }
 
-Cat::Cat(const Cat &other)
+Cat::Cat(const Cat &other) : Animal()
 {
 	std::cout << "Cat copy constructor called" << std::endl;
 	*this = other;
@@ -31,4 +31,17 @@ Cat::~Cat()
 void Cat::makeSound() const
 {
 	std::cout << "meow" << std::endl;
+}
+
+void Cat::thinkAboutChur()
+{
+	for (int i = 0; i < MAX_IDEA; ++i)
+	{
+		brain->setIdea(i, "CHUR");
+	}
+}
+
+std::string Cat::getIdea() const
+{
+	return (brain->getIdeas()[0]);
 }

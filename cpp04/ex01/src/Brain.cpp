@@ -24,3 +24,17 @@ Brain::~Brain()
 {
 	std::cout << "Brain destructor called" << std::endl;
 }
+
+std::string const *Brain::getIdeas() const
+{
+	return (ideas);
+}
+
+void Brain::setIdea(int i, std::string idea)
+{
+	if (i >= MAX_IDEA) {
+		return;
+	}
+
+	ideas[i] = idea;
+}

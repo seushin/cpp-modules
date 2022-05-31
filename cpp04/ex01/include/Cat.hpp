@@ -13,6 +13,8 @@ public:
 	Cat &operator=(const Cat &rhs);
 	~Cat();
 	void makeSound() const;
+	void thinkAboutChur();
+	std::string getIdea() const;
 
 private:
 	Brain *brain;
