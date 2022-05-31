@@ -5,6 +5,7 @@
 #include "WrongCat.hpp"
 #include "WrongDog.hpp"
 #include <iostream>
+#include <string>
 
 void makeSound(const Animal *a)
 {
@@ -19,7 +20,11 @@ int main()
 
 		makeSound(c);
 		makeSound(d);
+
+		delete c;
+		delete d;
 	}
+	std::cout << std::string(50, '-') << std::endl;
 	{
 		const Animal *meta = new Animal();
 		const Animal *c = new Cat();
@@ -30,7 +35,12 @@ int main()
 		c->makeSound();
 		d->makeSound();
 		meta->makeSound();
+
+		delete meta;
+		delete c;
+		delete d;
 	}
+	std::cout << std::string(50, '-') << std::endl;
 	{
 		const WrongAnimal *meta = new WrongAnimal();
 		const WrongAnimal *c = new WrongCat();
@@ -41,6 +51,10 @@ int main()
 		c->makeSound();
 		d->makeSound();
 		meta->makeSound();
+
+		delete meta;
+		delete c;
+		delete d;
 	}
 
 	return (0);
