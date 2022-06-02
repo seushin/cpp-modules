@@ -13,6 +13,10 @@ MateriaSource::MateriaSource()
 MateriaSource::MateriaSource(const MateriaSource &other)
 {
 	std::cout << "MateriaSource copy constructor" << std::endl;
+	for (int i = 0; i < MS_MAX_SOURCE_SIZE; ++i)
+	{
+		storage[i] = NULL;
+	}
 	*this = other;
 }
 
@@ -20,7 +24,13 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &rhs)
 {
 	for (int i = 0; i < MS_MAX_SOURCE_SIZE; ++i)
 	{
-		storage[i] = rhs.storage[i];
+		delete storage[i];
+		storage[i] = NULL;
+
+		if (rhs.storage[i])
+		{
+			storage[i] = rhs.storage[i]->clone();
+		}
 	}
 	return (*this);
 }
