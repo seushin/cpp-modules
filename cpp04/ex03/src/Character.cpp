@@ -76,10 +76,10 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter &target)
 {
-	AMateria *e = slot_[idx];
+	AMateria *materia = slot_[idx];
 
-	if (e)
+	if (materia)
 	{
-		e->use(target);
+		materia->use(target);
 	}
 }

@@ -4,7 +4,7 @@
 MateriaSource::MateriaSource()
 {
 	std::cout << "MateriaSource default constructor" << std::endl;
-	for (int i = 0; i < MS_MAX_SIZE; ++i)
+	for (int i = 0; i < MS_MAX_SOURCE_SIZE; ++i)
 	{
 		storage[i] = NULL;
 	}
@@ -18,7 +18,7 @@ MateriaSource::MateriaSource(const MateriaSource &other)
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &rhs)
 {
-	for (int i = 0; i < MS_MAX_SIZE; ++i)
+	for (int i = 0; i < MS_MAX_SOURCE_SIZE; ++i)
 	{
 		storage[i] = rhs.storage[i];
 	}
@@ -28,7 +28,7 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &rhs)
 MateriaSource::~MateriaSource()
 {
 	std::cout << "MateriaSource destructor" << std::endl;
-	for (int i = 0; i < MS_MAX_SIZE; ++i)
+	for (int i = 0; i < MS_MAX_SOURCE_SIZE; ++i)
 	{
 		delete storage[i];
 		storage[i] = NULL;
@@ -37,7 +37,7 @@ MateriaSource::~MateriaSource()
 
 void MateriaSource::learnMateria(AMateria *am)
 {
-	for (int i = 0; i < MS_MAX_SIZE; ++i)
+	for (int i = 0; i < MS_MAX_SOURCE_SIZE; ++i)
 	{
 		if (storage[i] == NULL)
 		{
@@ -49,7 +49,7 @@ void MateriaSource::learnMateria(AMateria *am)
 
 AMateria *MateriaSource::createMateria(const std::string &type)
 {
-	for (int i = 0; i < MS_MAX_SIZE; ++i)
+	for (int i = 0; i < MS_MAX_SOURCE_SIZE; ++i)
 	{
 		if (storage[i] == NULL)
 			break;

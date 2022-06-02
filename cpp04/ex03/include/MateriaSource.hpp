@@ -5,7 +5,7 @@
 #include "IMateriaSource.hpp"
 #include <string>
 
-#define MS_MAX_SIZE 4
+#define MS_MAX_SOURCE_SIZE 4
 
 class MateriaSource : public IMateriaSource
 {
@@ -19,7 +19,7 @@ public:
 	AMateria *createMateria(const std::string &type);
 
 private:
-	AMateria *storage[MS_MAX_SIZE];
+	AMateria *storage[MS_MAX_SOURCE_SIZE];
 };
 
 #endif// !MATERIASOURCE_HPP
