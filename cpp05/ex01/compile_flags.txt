@@ -1,0 +1,6 @@
+c++
+-Wall
+-Wextra
+-Werror
+-I
+.
