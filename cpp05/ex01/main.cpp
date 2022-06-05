@@ -7,24 +7,40 @@ int main()
 {
 	try
 	{
-		Bureaucrat jim("jim", 1);
+		Form form("exceptForm", 1, 151);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	try
+	{
+		Form form("exceptForm", 0, 150);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	try
+	{
+		Bureaucrat jim("jim", 10);
 		Bureaucrat bob("bob", 150);
 
 		std::cout << jim << std::endl;
 		std::cout << bob << std::endl;
 
-		jim.decreaseGrade();
-		bob.increaseGrade();
+		Form testForm("testForm", 100, 10);
+		Form copyForm(testForm);
 
-		std::cout << jim << std::endl;
-		std::cout << bob << std::endl;
+		std::cout << testForm << std::endl;
 
-		Form task1("task1", 100, 10);
+		jim.signForm(testForm);
+		std::cout << testForm << std::endl;
 
-		std::cout << task1 << std::endl;
-
-		jim.signForm(task1);
-		bob.signForm(task1);
+		bob.signForm(copyForm);
+		std::cout << copyForm << std::endl;
 	}
 	catch (std::exception &e)
 	{
