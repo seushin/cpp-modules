@@ -12,8 +12,11 @@ public:
 	Form(std::string name, unsigned int signGrade, unsigned int execGrade);
 	Form(const Form &other);
 	Form &operator=(const Form &rhs);
-	~Form();
+	virtual ~Form();
 	void beSigned(const Bureaucrat &bur);
+	void canExecute(const Bureaucrat &executor) const;
+	virtual void execute(const Bureaucrat &executor) const = 0;
+
 	const std::string &getName() const;
 	bool getSigned() const;
 	unsigned int getRequiredSignGrade() const;
@@ -24,6 +27,10 @@ public:
 		const char *what() const throw();
 	};
 	class GradeTooLowException: public std::exception
+	{
+		const char *what() const throw();
+	};
+	class MustBeSignedException: public std::exception
 	{
 		const char *what() const throw();
 	};
