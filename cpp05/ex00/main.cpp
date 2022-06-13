@@ -24,10 +24,11 @@ int main()
 		// never print this
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	try
 	{
-		std::cout << std::endl << "test constructor throw too high exception" << std::endl;
+		std::cout << "test constructor throw too high exception" << std::endl;
 		Bureaucrat bob("bob", 0);
 
 		// never print this
@@ -37,9 +38,11 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
+
 	try
 	{
-		std::cout << std::endl << "test constructor throw too low exception" << std::endl;
+		std::cout << "test constructor throw too low exception" << std::endl;
 		Bureaucrat bob("bob", 151);
 
 		// never print this
@@ -49,10 +52,11 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	try
 	{
-		std::cout << std::endl << "test increment func throw too high exception" << std::endl;
+		std::cout << "test increment func throw too high exception" << std::endl;
 		Bureaucrat bob("bob", 1);
 
 		bob.increaseGrade();
@@ -63,9 +67,11 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
+
 	try
 	{
-		std::cout << std::endl << "test decrement func throw too low exception" << std::endl;
+		std::cout << "test decrement func throw too low exception" << std::endl;
 		Bureaucrat bob("bob", 150);
 
 		bob.decreaseGrade();

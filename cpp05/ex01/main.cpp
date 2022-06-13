@@ -7,24 +7,29 @@ int main()
 {
 	try
 	{
+		std::cout << "test grade too low exception" << std::endl;
 		Form form("exceptForm", 1, 151);
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	try
 	{
+		std::cout << "test grade too high exception" << std::endl;
 		Form form("exceptForm", 0, 150);
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	try
 	{
+		std::cout << "test sign form" << std::endl;
 		Bureaucrat jim("jim", 10);
 		Bureaucrat bob("bob", 150);
 

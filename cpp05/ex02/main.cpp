@@ -2,7 +2,6 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-#include <cassert>
 #include <exception>
 #include <iostream>
 
@@ -10,7 +9,7 @@ int main()
 {
 	try
 	{
-		assert("test ShrubberyCreationForm execute");
+		std::cout << "** test ShrubberyCreationForm execute" << std::endl;
 		ShrubberyCreationForm form("home");
 		Bureaucrat me("me", 145);
 		Bureaucrat boss("boss", 137);
@@ -21,14 +20,14 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
-		assert(false); // abort
+		std::cerr << "ERROR: " << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	try
 	{
-		assert("test RobotomyRequestForm execute");
-		RobotomyRequestForm form("desk");
+		std::cout << "** test RobotomyRequestForm execute" << std::endl;
+		RobotomyRequestForm form("shoes");
 		Bureaucrat me("me", 70);
 		Bureaucrat boss("boss", 45);
 
@@ -38,13 +37,13 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
-		assert(false); // abort
+		std::cerr << "ERROR: " << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	try
 	{
-		assert("test PresidentialPardonForm execute");
+		std::cout << "** test PresidentialPardonForm execute" << std::endl;
 		PresidentialPardonForm form("you");
 		Bureaucrat me("me", 25);
 		Bureaucrat boss("boss", 5);
@@ -55,9 +54,9 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
-		assert(false); // abort
+		std::cerr << "ERROR: " << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	return (0);
 }
