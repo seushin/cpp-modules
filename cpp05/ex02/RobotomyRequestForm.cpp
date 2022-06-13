@@ -33,7 +33,7 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 
 	std::cout << "* drilling noise *" << std::endl;
 	if (randomInt)
-		std::cout << target_ << "has been robotomized" << std::endl;
+		std::cout << target_ << " has been robotomized" << std::endl;
 	else
 		std::cout << "robotomy failed" << std::endl;
 }

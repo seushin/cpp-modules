@@ -1,6 +1,8 @@
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include <cassert>
 #include <exception>
 #include <iostream>
 
@@ -8,67 +10,53 @@ int main()
 {
 	try
 	{
+		assert("test ShrubberyCreationForm execute");
 		ShrubberyCreationForm form("home");
-		Bureaucrat me("me", 140);
+		Bureaucrat me("me", 145);
+		Bureaucrat boss("boss", 137);
 
 		me.signForm(form);
-		form.execute(me);
+		me.executeForm(form);
+		boss.executeForm(form);
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
+		assert(false); // abort
 	}
 
 	try
 	{
-		ShrubberyCreationForm form("home");
-		Bureaucrat me("me", 140);
-		Bureaucrat boss("boss", 10);
+		assert("test RobotomyRequestForm execute");
+		RobotomyRequestForm form("desk");
+		Bureaucrat me("me", 70);
+		Bureaucrat boss("boss", 45);
 
 		me.signForm(form);
-		form.execute(boss);
+		me.executeForm(form);
+		boss.executeForm(form);
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
+		assert(false); // abort
 	}
 
 	try
 	{
-		RobotomyRequestForm form("home");
-		Bureaucrat me("me", 40);
-		Bureaucrat boss("boss", 10);
+		assert("test PresidentialPardonForm execute");
+		PresidentialPardonForm form("you");
+		Bureaucrat me("me", 25);
+		Bureaucrat boss("boss", 5);
 
 		me.signForm(form);
-		form.execute(boss);
+		me.executeForm(form);
+		boss.executeForm(form);
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
-	}
-
-	try
-	{
-		Bureaucrat jim("jim", 10);
-		Bureaucrat bob("bob", 150);
-
-		std::cout << jim << std::endl;
-		std::cout << bob << std::endl;
-
-		// Form testForm("testForm", 100, 10);
-		// Form copyForm(testForm);
-
-		// std::cout << testForm << std::endl;
-
-		// jim.signForm(testForm);
-		// std::cout << testForm << std::endl;
-
-		// bob.signForm(copyForm);
-		// std::cout << copyForm << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
+		assert(false); // abort
 	}
 
 	return (0);
