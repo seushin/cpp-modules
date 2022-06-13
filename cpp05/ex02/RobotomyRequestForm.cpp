@@ -29,9 +29,15 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
+	static time_t seed;
+
 	canExecute(executor);
 
-	std::srand(std::time(nullptr));
+	if (seed == 0)
+	{
+		seed = std::time(nullptr);
+		std::srand(seed);
+	}
 	int randomInt = std::rand() % 2;
 
 	std::cout << "* drilling noise *" << std::endl;
