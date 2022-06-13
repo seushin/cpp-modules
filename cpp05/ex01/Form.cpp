@@ -1,16 +1,11 @@
 #include "Form.hpp"
 
 Form::Form()
-	: name_("default-form"),
-	  signed_(false),
-	  requiredSignGrade_(100),
-	  requiredExecuteGrade_(10) {}
+	: name_("default-form"), signed_(false), requiredSignGrade_(100), requiredExecuteGrade_(10)
+{}
 
 Form::Form(std::string name, unsigned int signGrade, unsigned int execGrade)
-	: name_(name),
-	  signed_(false),
-	  requiredSignGrade_(signGrade),
-	  requiredExecuteGrade_(execGrade)
+	: name_(name), signed_(false), requiredSignGrade_(signGrade), requiredExecuteGrade_(execGrade)
 {
 	if (requiredSignGrade_ < BU_GRADE_MAX || requiredExecuteGrade_ < BU_GRADE_MAX)
 		throw GradeTooHighException();
@@ -19,10 +14,9 @@ Form::Form(std::string name, unsigned int signGrade, unsigned int execGrade)
 }
 
 Form::Form(const Form &other)
-	: name_(other.name_),
-	  signed_(other.signed_),
-	  requiredSignGrade_(other.requiredSignGrade_),
-	  requiredExecuteGrade_(other.requiredExecuteGrade_) {}
+	: name_(other.name_), signed_(other.signed_), requiredSignGrade_(other.requiredSignGrade_),
+	  requiredExecuteGrade_(other.requiredExecuteGrade_)
+{}
 
 Form &Form::operator=(const Form &rhs)
 {
@@ -33,8 +27,8 @@ Form &Form::operator=(const Form &rhs)
 std::ostream &operator<<(std::ostream &o, const Form &f)
 {
 	o << f.getName() << ", " << (f.getSigned() ? "signed" : "unsigned")
-	  << " form. requiredSignGrade(" << f.getRequiredSignGrade()
-	  << ") requiredExecuteGrade(" << f.getRequiredExecuteGrade() << ")";
+	  << " form. requiredSignGrade(" << f.getRequiredSignGrade() << ") requiredExecuteGrade("
+	  << f.getRequiredExecuteGrade() << ")";
 	return (o);
 }
 

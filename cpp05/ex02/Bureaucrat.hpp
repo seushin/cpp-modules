@@ -25,11 +25,11 @@ public:
 	void signForm(Form &form);
 	void executeForm(const Form &form);
 
-	class GradeTooHighException: public std::exception
+	class GradeTooHighException : public std::exception
 	{
 		const char *what() const throw();
 	};
-	class GradeTooLowException: public std::exception
+	class GradeTooLowException : public std::exception
 	{
 		const char *what() const throw();
 	};
@@ -41,4 +41,4 @@ private:
 
 std::ostream &operator<<(std::ostream &o, const Bureaucrat &b);
 
-#endif// !BUREAUCRAT_HPP
+#endif // !BUREAUCRAT_HPP

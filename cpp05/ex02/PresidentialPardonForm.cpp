@@ -6,13 +6,16 @@
 #define PP_EXEC_GRADE 5
 
 PresidentialPardonForm::PresidentialPardonForm()
-	: Form(PP_FORM_NAME, PP_SIGN_GRADE, PP_EXEC_GRADE), target_("default") {}
+	: Form(PP_FORM_NAME, PP_SIGN_GRADE, PP_EXEC_GRADE), target_("default")
+{}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
-	: Form(PP_FORM_NAME, PP_SIGN_GRADE, PP_EXEC_GRADE), target_(target) {}
+	: Form(PP_FORM_NAME, PP_SIGN_GRADE, PP_EXEC_GRADE), target_(target)
+{}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other)
-	: Form(other), target_(other.target_) {}
+	: Form(other), target_(other.target_)
+{}
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &rhs)
 {
@@ -26,5 +29,5 @@ void PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {
 	canExecute(executor);
 
-	std::cout << target_ << "has been pardoned by Zaphod Beeblebrox" << std::endl;
+	std::cout << target_ << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

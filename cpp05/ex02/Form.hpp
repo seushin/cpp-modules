@@ -22,15 +22,15 @@ public:
 	unsigned int getRequiredSignGrade() const;
 	unsigned int getRequiredExecuteGrade() const;
 
-	class GradeTooHighException: public std::exception
+	class GradeTooHighException : public std::exception
 	{
 		const char *what() const throw();
 	};
-	class GradeTooLowException: public std::exception
+	class GradeTooLowException : public std::exception
 	{
 		const char *what() const throw();
 	};
-	class MustBeSignedException: public std::exception
+	class MustBeSignedException : public std::exception
 	{
 		const char *what() const throw();
 	};
@@ -44,4 +44,4 @@ private:
 
 std::ostream &operator<<(std::ostream &o, const Form &f);
 
-#endif// !FORM_HPP
+#endif // !FORM_HPP

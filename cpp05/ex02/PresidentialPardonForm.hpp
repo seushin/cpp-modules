@@ -19,4 +19,4 @@ private:
 	std::string target_;
 };
 
-#endif// !PRESIDENTIALPARADONFORM_HPP
+#endif // !PRESIDENTIALPARADONFORM_HPP

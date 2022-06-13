@@ -19,4 +19,4 @@ private:
 	std::string target_;
 };
 
-#endif// !SHRUBBERYCREATIONFORM_HPP
+#endif // !SHRUBBERYCREATIONFORM_HPP

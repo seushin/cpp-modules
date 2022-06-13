@@ -5,8 +5,7 @@
 
 Bureaucrat::Bureaucrat() : name_(""), grade_(BU_GRADE_MIN) {}
 
-Bureaucrat::Bureaucrat(const std::string &name, unsigned int grade)
-	: name_(name), grade_(grade)
+Bureaucrat::Bureaucrat(const std::string &name, unsigned int grade) : name_(name), grade_(grade)
 {
 	if (grade < BU_GRADE_MAX)
 		throw GradeTooHighException();
@@ -68,8 +67,8 @@ void Bureaucrat::signForm(Form &form)
 	}
 	catch (std::exception &e)
 	{
-		std::cout << name_ << " couldn't sign " << form.getName()
-				  << " because " << e.what() << "." << std::endl;
+		std::cout << name_ << " couldn't sign " << form.getName() << " because " << e.what() << "."
+				  << std::endl;
 	}
 }
 

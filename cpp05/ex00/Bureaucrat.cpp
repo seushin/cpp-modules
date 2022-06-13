@@ -4,8 +4,7 @@
 
 Bureaucrat::Bureaucrat() : name_(""), grade_(BU_GRADE_MIN) {}
 
-Bureaucrat::Bureaucrat(const std::string &name, unsigned int grade)
-	: name_(name), grade_(grade)
+Bureaucrat::Bureaucrat(const std::string &name, unsigned int grade) : name_(name), grade_(grade)
 {
 	if (grade < BU_GRADE_MAX)
 		throw GradeTooHighException();

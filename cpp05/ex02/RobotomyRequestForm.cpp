@@ -8,13 +8,16 @@
 #define RR_EXEC_GRADE 45
 
 RobotomyRequestForm::RobotomyRequestForm()
-	: Form(RR_FORM_NAME, RR_SIGN_GRADE, RR_EXEC_GRADE), target_("default") {}
+	: Form(RR_FORM_NAME, RR_SIGN_GRADE, RR_EXEC_GRADE), target_("default")
+{}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
-	: Form(RR_FORM_NAME, RR_SIGN_GRADE, RR_EXEC_GRADE), target_(target) {}
+	: Form(RR_FORM_NAME, RR_SIGN_GRADE, RR_EXEC_GRADE), target_(target)
+{}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other)
-	: Form(other), target_(other.target_) {}
+	: Form(other), target_(other.target_)
+{}
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &rhs)
 {
