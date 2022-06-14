@@ -18,6 +18,16 @@ public:
 	{
 		const char *what() const throw();
 	};
+
+private:
+	enum EForm
+	{
+		shrubberyCreation,
+		robotomyRequest,
+		presidentialPardon,
+		formLength,
+	};
+	EForm searchForm(const std::string &name);
 };
 
 #endif // !INTERN_HPP

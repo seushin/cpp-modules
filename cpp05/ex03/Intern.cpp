@@ -20,15 +20,7 @@ Intern &Intern::operator=(const Intern &)
 
 Intern::~Intern() {}
 
-enum EForm
-{
-	shrubberyCreation,
-	robotomyRequest,
-	presidentialPardon,
-	formLength,
-};
-
-EForm searchForm(const std::string &name)
+Intern::EForm Intern::searchForm(const std::string &name)
 {
 	std::string table[formLength];
 
@@ -39,7 +31,7 @@ EForm searchForm(const std::string &name)
 	for (int i = 0; i < formLength; ++i)
 	{
 		if (table[i].compare(name) == 0)
-			return ((EForm) i);
+			return ((EForm)i);
 	}
 	return (formLength);
 }
@@ -70,7 +62,7 @@ Form *Intern::makeForm(const std::string &name, const std::string &target)
 	return (res);
 }
 
-const char* Intern::NotFoundFormException::what() const throw()
+const char *Intern::NotFoundFormException::what() const throw()
 {
 	return ("Not found form name");
 }
