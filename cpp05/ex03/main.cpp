@@ -17,24 +17,28 @@ int main()
 		std::cout << "returned form: " << *form << std::endl;
 		me.signForm(*form);
 		me.executeForm(*form);
+		delete form;
 		std::cout << std::endl;
 
 		form = intern.makeForm("shrubbery creation", "home");
 		std::cout << "returned form: " << *form << std::endl;
 		me.signForm(*form);
 		me.executeForm(*form);
+		delete form;
 		std::cout << std::endl;
 
 		form = intern.makeForm("presidential pardon", "you");
 		std::cout << "returned form: " << *form << std::endl;
 		me.signForm(*form);
 		me.executeForm(*form);
+		delete form;
 		std::cout << std::endl;
 
 		form = intern.makeForm("wrong form", "some target");
 		std::cout << "returned form: " << *form << std::endl;
 		me.signForm(*form);
 		me.executeForm(*form);
+		delete form;
 	}
 	catch (std::exception &e)
 	{

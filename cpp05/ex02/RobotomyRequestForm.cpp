@@ -35,7 +35,7 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 
 	if (seed == 0)
 	{
-		seed = std::time(nullptr);
+		seed = std::time(NULL);
 		std::srand(seed);
 	}
 	int randomInt = std::rand() % 2;

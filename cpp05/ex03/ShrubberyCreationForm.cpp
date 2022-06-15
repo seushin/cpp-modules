@@ -31,8 +31,8 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
 	canExecute(executor);
 
-	std::ofstream output(target_ + "_shrubbery");
-	std::string asciiTree = "————–*-*————–\n"
+	const std::string filename = target_ + "_shrubbery";
+	const std::string asciiTree = "————–*-*————–\n"
 							"———–*—-*–*———–\n"
 							"——–*–*—-*—–*–*—–\n"
 							"—–*—–*—-*–*—-*——\n"
@@ -49,6 +49,8 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 							"———–;###—————-\n"
 							"———-,####.—————\n"
 							"/\\/\\.######.\\/\\/\\/\\—–\n";
+
+	std::ofstream output(filename.c_str());
 
 	output << asciiTree;
 }
