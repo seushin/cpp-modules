@@ -40,7 +40,7 @@ Convert::~Convert() {}
 char Convert::toChar() const
 {
 	if (value_ < std::numeric_limits<char>::min() || value_ > std::numeric_limits<char>::max())
-		throw ConvertImpossibleException();
+		throw OutOfRangeException();
 	if (isInf() || isNan())
 		throw ConvertImpossibleException();
 	return (static_cast<char>(value_));
@@ -49,7 +49,7 @@ char Convert::toChar() const
 int Convert::toInt() const
 {
 	if (value_ < std::numeric_limits<int>::min() || value_ > std::numeric_limits<int>::max())
-		throw ConvertImpossibleException();
+		throw OutOfRangeException();
 	if (isInf() || isNan())
 		throw ConvertImpossibleException();
 	return (static_cast<int>(value_));
@@ -61,7 +61,7 @@ float Convert::toFloat() const
 	{
 		if (value_ < -std::numeric_limits<float>::max() ||
 			value_ > std::numeric_limits<float>::max())
-			throw ConvertImpossibleException();
+			throw OutOfRangeException();
 	}
 	return (static_cast<float>(value_));
 }
@@ -83,7 +83,7 @@ bool Convert::isInf() const
 
 const char *Convert::WrongInputException::what() const throw()
 {
-	return ("Input cannot be parsed to double type");
+	return ("wrong input");
 }
 
 const char *Convert::ConvertImpossibleException::what() const throw()
@@ -93,7 +93,7 @@ const char *Convert::ConvertImpossibleException::what() const throw()
 
 const char *Convert::OutOfRangeException::what() const throw()
 {
-	return ("input is out of double type range");
+	return ("out of range");
 }
 
 void Convert::printChar(std::ostream &o) const
@@ -108,9 +108,9 @@ void Convert::printChar(std::ostream &o) const
 		else
 			o << "'" << c << "'";
 	}
-	catch (const ConvertImpossibleException &e)
+	catch (const std::exception &)
 	{
-		o << e.what();
+		o << "impossible";
 	}
 	o << std::endl;
 }
@@ -124,9 +124,9 @@ void Convert::printInt(std::ostream &o) const
 
 		o << i;
 	}
-	catch (const ConvertImpossibleException &e)
+	catch (const std::exception &)
 	{
-		o << e.what();
+		o << "impossible";
 	}
 	o << std::endl;
 }
@@ -145,9 +145,9 @@ void Convert::printFloat(std::ostream &o) const
 		else
 			o << f << "f";
 	}
-	catch (const ConvertImpossibleException &e)
+	catch (const std::exception &)
 	{
-		o << e.what();
+		o << "impossible";
 	}
 	o << std::endl;
 }
@@ -166,9 +166,9 @@ void Convert::printDouble(std::ostream &o) const
 		else
 			o << d;
 	}
-	catch (const ConvertImpossibleException &e)
+	catch (const std::exception &)
 	{
-		o << e.what();
+		o << "impossible";
 	}
 }
 
