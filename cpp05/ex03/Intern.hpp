@@ -16,6 +16,7 @@ public:
 
 	class NotFoundFormException : public std::exception
 	{
+	public:
 		const char *what() const throw();
 	};
 

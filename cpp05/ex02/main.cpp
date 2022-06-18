@@ -27,7 +27,7 @@ int main()
 	try
 	{
 		std::cout << "** test RobotomyRequestForm execute" << std::endl;
-		RobotomyRequestForm form("shoes");
+		RobotomyRequestForm form("Bender");
 		Bureaucrat me("me", 70);
 		Bureaucrat boss("boss", 45);
 
