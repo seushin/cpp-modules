@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include <typeinfo>
 
 Base *generate(void)
 {
@@ -18,6 +19,7 @@ Base *generate(void)
 		std::srand(seed);
 	}
 
+	res = NULL;
 	random = std::rand() % 3;
 	switch (random)
 	{
@@ -63,6 +65,7 @@ void identify(Base *p)
 		std::cout << "C" << std::endl;
 		return;
 	}
+	std::cout << "not found" << std::endl;
 }
 
 void identify(Base &p)
@@ -74,21 +77,25 @@ void identify(Base &p)
 		p = dynamic_cast<A &>(p);
 
 		std::cout << "A" << std::endl;
+		return;
 	}
-	catch (...)
+	catch (std::bad_cast)
 	{}
 	try
 	{
 		p = dynamic_cast<B &>(p);
 		std::cout << "B" << std::endl;
+		return;
 	}
-	catch (...)
+	catch (std::bad_cast)
 	{}
 	try
 	{
 		p = dynamic_cast<C &>(p);
 		std::cout << "C" << std::endl;
+		return;
 	}
-	catch (...)
+	catch (std::bad_cast)
 	{}
+	std::cout << "not found" << std::endl;
 }
