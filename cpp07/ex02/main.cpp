@@ -1,7 +1,7 @@
 #include "Array.hpp"
-#include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
 
 #define MAX_VAL 750
 
@@ -17,10 +17,29 @@ int main()
 		numbers[i] = value;
 		mirror[i] = value;
 	}
+
 	//SCOPE
 	{
 		Array<int> tmp = numbers;
 		Array<int> test(tmp);
+	}
+
+	{
+		Array<int> empty;
+
+		if (empty.size() != 0)
+		{
+			std::cerr << "empty array's size must be zero" << std::endl;
+		}
+
+		try
+		{
+			empty[0];
+		}
+		catch (std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 
 	for (int i = 0; i < MAX_VAL; i++)
@@ -32,13 +51,20 @@ int main()
 		}
 	}
 
+	unsigned int size = numbers.size();
+	if (size != MAX_VAL)
+	{
+		std::cerr << "size() is expected " << MAX_VAL << " but " << size << std::endl;
+		return (1);
+	}
+
 	try
 	{
 		numbers[-2] = 0;
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 
 	try
@@ -47,7 +73,7 @@ int main()
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 
 	for (int i = 0; i < MAX_VAL; i++)
