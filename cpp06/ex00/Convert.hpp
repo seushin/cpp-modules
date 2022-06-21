@@ -23,10 +23,10 @@ public:
 	bool isNan() const;
 	bool isInf() const;
 
-	void printChar(std::ostream &o) const;
-	void printInt(std::ostream &o) const;
-	void printFloat(std::ostream &o) const;
-	void printDouble(std::ostream &o) const;
+	std::string printChar() const;
+	std::string printInt() const;
+	std::string printFloat() const;
+	std::string printDouble() const;
 
 	class WrongInputException : public std::exception
 	{

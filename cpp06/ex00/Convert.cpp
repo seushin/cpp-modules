@@ -1,10 +1,11 @@
 #include "Convert.hpp"
 #include <cctype>
+#include <cerrno>
 #include <cmath>
 #include <cstdlib>
 #include <cstring>
 #include <limits>
-#include <cerrno>
+#include <sstream>
 
 Convert::Convert() : value_(0) {}
 
@@ -96,88 +97,97 @@ const char *Convert::OutOfRangeException::what() const throw()
 	return ("out of range");
 }
 
-void Convert::printChar(std::ostream &o) const
+std::string Convert::printChar() const
 {
-	o << "char: ";
+	std::stringstream ss;
+
+	ss << "char: ";
 	try
 	{
 		char c = toChar();
 
 		if (!std::isprint(c))
-			o << C_NOND;
+			ss << C_NOND;
 		else
-			o << "'" << c << "'";
+			ss << "'" << c << "'";
 	}
 	catch (const std::exception &)
 	{
-		o << "impossible";
+		ss << "impossible";
 	}
-	o << std::endl;
+	return (ss.str());
 }
 
-void Convert::printInt(std::ostream &o) const
+std::string Convert::printInt() const
 {
-	o << "int: ";
+	std::stringstream ss;
+
+	ss << "int: ";
 	try
 	{
 		int i = toInt();
 
-		o << i;
+		ss << i;
 	}
 	catch (const std::exception &)
 	{
-		o << "impossible";
+		ss << "impossible";
 	}
-	o << std::endl;
+	return (ss.str());
 }
 
-void Convert::printFloat(std::ostream &o) const
+std::string Convert::printFloat() const
 {
-	o << "float: ";
+	std::stringstream ss;
+
+	ss << "float: ";
 	try
 	{
 		float f = toFloat();
 
 		if (isInf())
-			o << std::showpos << f << "f";
-		else if (f == static_cast<int>(f))
-			o << f << ".0f";
+			ss << std::showpos << f << "f";
+		else if (f == std::floor(f))
+			ss << f << ".0f";
 		else
-			o << f << "f";
+			ss << f << "f";
 	}
 	catch (const std::exception &)
 	{
-		o << "impossible";
+		ss << "impossible";
 	}
-	o << std::endl;
+	return (ss.str());
 }
 
-void Convert::printDouble(std::ostream &o) const
+std::string Convert::printDouble() const
 {
-	o << "double: ";
+	std::stringstream ss;
+
+	ss << "double: ";
 	try
 	{
 		double d = toDouble();
 
 		if (isInf())
-			o << std::showpos << d;
-		else if (d == static_cast<int>(d))
-			o << d << ".0";
+			ss << std::showpos << d;
+		else if (d == std::floor(d))
+			ss << d << ".0";
 		else
-			o << d;
+			ss << d;
 	}
 	catch (const std::exception &)
 	{
-		o << "impossible";
+		ss << "impossible";
 	}
+	return (ss.str());
 }
 
 std::ostream &operator<<(std::ostream &o, const Convert &conv)
 {
-	conv.printChar(o);
-	conv.printInt(o);
-	conv.printFloat(o);
-	conv.printDouble(o);
+	o << conv.printChar() << std::endl
+	  << conv.printInt() << std::endl
+	  << conv.printFloat() << std::endl
+	  << conv.printDouble();
 
 	return (o);
 }
