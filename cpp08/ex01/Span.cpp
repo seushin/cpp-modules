@@ -38,7 +38,7 @@ unsigned int Span::shortestSpan()
 		throw NoSpanException();
 	std::sort(numbers_.begin(), numbers_.end());
 	shortest = UINT_MAX;
-	for (int i = 0; i + 1 < length; ++i)
+	for (std::vector<int>::size_type i = 0; i + 1 < length; ++i)
 	{
 		unsigned int span;
 
