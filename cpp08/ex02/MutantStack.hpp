@@ -10,26 +10,27 @@ class MutantStack : public std::stack<T>
 public:
 	// typedefs
 	// clang-format off
-	typedef typename std::stack<T>                                          base_container;
-	typedef typename base_container::container_type::iterator               iterator;
-	typedef typename base_container::container_type::const_iterator         const_iterator;
-	typedef typename base_container::container_type::reverse_iterator       reverse_iterator;
-	typedef typename base_container::container_type::const_reverse_iterator const_reverse_iterator;
+	typedef typename std::stack<T>::container_type           container_type;
+	typedef typename container_type::iterator                iterator;
+	typedef typename container_type::const_iterator          const_iterator;
+	typedef typename container_type::reverse_iterator        reverse_iterator;
+	typedef typename container_type::const_reverse_iterator  const_reverse_iterator;
 	// clang-format on
 
 	MutantStack() {}
 
-	MutantStack(const MutantStack &other)
+	MutantStack(const MutantStack &other) : std::stack<T>(other)
 	{
 		*this = other;
 	}
 
 	MutantStack &operator=(const MutantStack &rhs)
 	{
-		base_container::operator=(rhs);
+		std::stack<T>::operator=(rhs);
 
 		return (*this);
 	}
+
 	~MutantStack() {}
 
 	iterator begin()

@@ -4,51 +4,65 @@
 
 int main()
 {
+	MutantStack<int> s;
+
+	s.push(0);
+	s.push(1);
+	s.push(2);
+	s.push(3);
+	s.push(42);
+
+	std::cout << "top: " << s.top() << std::endl;
+	std::cout << "size: " << s.size() << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "test pop" << std::endl;
 	{
-		MutantStack<int> s;
-
-		s.push(0);
-		s.push(42);
-
-		std::cout << "{ 0, 42 }" << std::endl;
-		std::cout << "top: " << s.top() << std::endl;
-		std::cout << "size: " << s.size() << std::endl;
-
 		s.pop();
-		std::cout << "pop" << std::endl;
 
 		std::cout << "top: " << s.top() << std::endl;
 		std::cout << "size: " << s.size() << std::endl;
-		s.pop();
 	}
 	std::cout << std::endl;
 
+	std::cout << "test copy" << std::endl;
 	{
-		MutantStack<int> s;
-		s.push(42);
-
 		MutantStack<int> copy(s);
 
-		std::cout << "{ 42 }" << std::endl;
-		std::cout << "origin: " << s.top() << std::endl;
-		std::cout << "copy: " << copy.top() << std::endl;
+		copy.pop();
+		std::cout << "copy.pop() after copy" << std::endl;
+		std::cout << "origin: top(" << s.top() << "), size(" << s.size() << ")" << std::endl;
+		std::cout << "copy: top(" << copy.top() << "), size(" << copy.size() << ")" << std::endl;
 	}
 	std::cout << std::endl;
 
+	std::cout << "test iterator" << std::endl;
 	{
-		MutantStack<int> s;
-		MutantStack<int>::iterator iter;
-		MutantStack<int>::iterator end;
+		MutantStack<int>::iterator iter, end;
 
-		s.push(42);
-		s.push(1);
-
-		std::cout << "{ 42, 1 }" << std::endl;
 		iter = s.begin();
 		end = s.end();
-		std::cout << *iter++ << std::endl;
-		std::cout << *iter++ << std::endl;
-		std::cout << (iter == end ? "true" : "false") << std::endl;
+		while (iter != end)
+		{
+			std::cout << *iter << " ";
+			iter++;
+		}
+		std::cout << std::endl;
+	}
+	std::cout << std::endl;
+
+	std::cout << "test reverse iterator" << std::endl;
+	{
+		MutantStack<int>::reverse_iterator iter, end;
+
+		iter = s.rbegin();
+		end = s.rend();
+		while (iter != end)
+		{
+			std::cout << *iter << " ";
+			iter++;
+		}
+		std::cout << std::endl;
 	}
 
 	return (0);

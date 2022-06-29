@@ -23,11 +23,12 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	std::cout << "test short/longest span exception" << std::endl;
 	try
 	{
-		Span sp(1);
+		Span sp(2);
 
 		sp.addNumber(42);
 
@@ -38,6 +39,7 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	std::cout << "test range addNumber" << std::endl;
 	try
@@ -54,6 +56,7 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	std::cout << "test big number" << std::endl;
 	try
@@ -70,6 +73,7 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	std::cout << "test 10,000 numbers" << std::endl;
 	try
@@ -87,6 +91,23 @@ int main()
 		std::cout << sp.longestSpan() << std::endl;
 	}
 	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+
+	std::cout << "test span 0 to 0" << std::endl;
+	try
+	{
+		Span sp(2);
+
+		sp.addNumber(0);
+		sp.addNumber(0);
+
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+	catch(std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
