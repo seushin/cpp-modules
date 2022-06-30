@@ -25,7 +25,7 @@ int main()
 	}
 	std::cout << std::endl;
 
-	std::cout << "test short/longest span exception" << std::endl;
+	std::cout << "test shortest span exception" << std::endl;
 	try
 	{
 		Span sp(2);
@@ -33,6 +33,20 @@ int main()
 		sp.addNumber(42);
 
 		std::cout << sp.shortestSpan() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+
+	std::cout << "test longest span exception" << std::endl;
+	try
+	{
+		Span sp(2);
+
+		sp.addNumber(42);
+
 		std::cout << sp.longestSpan() << std::endl;
 	}
 	catch (std::exception &e)

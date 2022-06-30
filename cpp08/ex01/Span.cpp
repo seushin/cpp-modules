@@ -32,7 +32,7 @@ void Span::addNumber(int n)
 unsigned int Span::shortestSpan()
 {
 	unsigned int shortest;
-	std::vector<int>::size_type length = numbers_.size();
+	const std::vector<int>::size_type length = numbers_.size();
 
 	if (length < 2)
 		throw NoSpanException();
@@ -52,12 +52,13 @@ unsigned int Span::shortestSpan()
 unsigned int Span::longestSpan()
 {
 	unsigned int longest;
-	std::vector<int>::size_type length = numbers_.size();
+	const std::vector<int>::size_type length = numbers_.size();
 
 	if (length < 2)
 		throw NoSpanException();
 	std::sort(numbers_.begin(), numbers_.end());
-	longest = std::labs(static_cast<long>(numbers_[length - 1]) - static_cast<long>(numbers_[0]));
+	longest = static_cast<unsigned int>(
+			std::labs(static_cast<long>(numbers_[length - 1]) - static_cast<long>(numbers_[0])));
 	return (longest);
 }
 

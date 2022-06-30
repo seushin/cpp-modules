@@ -20,9 +20,9 @@ int main()
 		std::cout << *easyfind(v, 9) << std::endl;
 		std::cout << *easyfind(v, 42) << std::endl;
 	}
-	catch (std::exception &)
+	catch (std::exception &e)
 	{
-		std::cerr << "Not found" << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	std::queue<int> q;
@@ -39,9 +39,9 @@ int main()
 		std::cout << *easyfind(v, 9) << std::endl;
 		std::cout << *easyfind(v, 42) << std::endl;
 	}
-	catch (std::exception &)
+	catch (std::exception &e)
 	{
-		std::cerr << "Not found" << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	return (0);

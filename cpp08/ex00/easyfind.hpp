@@ -2,16 +2,16 @@
 #define EASYFIND_HPP
 
 #include <algorithm>
-#include <exception>
+#include <stdexcept>
 
-template<typename T>
-typename T::iterator easyfind(T &iterable, int value)
+template<typename Container>
+typename Container::iterator easyfind(Container &c, int value)
 {
-	typename T::iterator res;
+	typename Container::iterator res;
 
-	res = find(iterable.begin(), iterable.end(), value);
-	if (res == iterable.end())
-		throw std::exception();
+	res = find(c.begin(), c.end(), value);
+	if (res == c.end())
+		throw std::range_error("easyfind: value is out of range");
 	return (res);
 }
 

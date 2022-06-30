@@ -1,7 +1,6 @@
 #ifndef MUTANTSTACK_HPP
 #define MUTANTSTACK_HPP
 
-#include <cstddef>
 #include <stack>
 
 template<typename T>
